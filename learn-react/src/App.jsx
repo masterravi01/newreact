@@ -1,57 +1,47 @@
 import "./App.css";
-import Chai from "./Chai";
-import { useState } from "react";
-import Card from "./components/Card";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 import Password from "./components/Password";
+import Counter from "./components/Counter";
+import ChangeColor from "./components/ChangeColor";
+import Userdetails from "./components/Userdetails";
+import CurrencyConvertor from "./components/CurrencyConvertor";
 
 function App() {
-  const [counter, setCounter] = useState(12);
-  const addValue = () => {
-    if (counter < 20) {
-      console.log("value added", counter + 1, Math.random());
-      setCounter(counter + 1);
-      setCounter((prevCounter) => prevCounter + 1);
-      setCounter((prevCounter) => prevCounter + 1);
-    }
-  };
-  const removeValue = () => {
-    if (counter > 0) {
-      console.log("value removed", counter - 1, Math.random());
-      setCounter(counter - 1);
-    }
-  };
-  const changeColor = (c) => {
-    setColor(c);
-  };
-  const userDetails = {
-    no: 1,
-    marks: [1, 2, 3, 4],
-    name: "rsp",
-  };
-  const subs = ["a", "d", "c"];
-  const [color, setColor] = useState("green");
   return (
-    <>
-      <Card name="ravii" btnName="FindMe" user={userDetails} subjects={subs} />
-      <Card />
-      <h1
-        className={`bg-${color}-400 text-white p-4 rounded-xl`}
-        style={{ backgroundColor: color }}
-      >
-        Hello World !
-      </h1>
-      <button onClick={() => changeColor("red")}>Change to Red</button>
-      <button onClick={() => setColor("blue")}>Change to Blue</button>
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/Password">Password</Link>
+          </li>
+          <li>
+            <Link to="/Counter">Counter</Link>
+          </li>
+          <li>
+            <Link to="/ChangeColor">ChangeColor</Link>
+          </li>
+          <li>
+            <Link to="/Userdetails">Userdetails</Link>
+          </li>
+          <li>
+            <Link to="/CurrencyConvertor">CurrencyConvertor</Link>
+          </li>
+        </ul>
+      </nav>
 
-      <h2>Counter value :{counter}</h2>
-
-      <button onClick={addValue}>Add</button>
-      <br />
-      <br />
-      <button onClick={removeValue}>Remove</button>
-      <Chai />
-      <Password />
-    </>
+      <Routes>
+        <Route path="/Password" element={<Password />} />
+        <Route path="/Counter" element={<Counter />} />
+        <Route path="/ChangeColor" element={<ChangeColor />} />
+        <Route path="/Userdetails" element={<Userdetails />} />
+        <Route path="/CurrencyConvertor" element={<CurrencyConvertor />} />
+        <Route path="*" element={<h1>Page Not Found</h1>} />
+      </Routes>
+    </Router>
   );
 }
 
