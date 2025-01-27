@@ -9,39 +9,40 @@ import CurrencyConvertor from "./components/CurrencyConvertor";
 
 function App() {
   return (
-    <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/Password">Password</Link>
-          </li>
-          <li>
-            <Link to="/Counter">Counter</Link>
-          </li>
-          <li>
-            <Link to="/ChangeColor">ChangeColor</Link>
-          </li>
-          <li>
-            <Link to="/Userdetails">Userdetails</Link>
-          </li>
-          <li>
-            <Link to="/CurrencyConvertor">CurrencyConvertor</Link>
-          </li>
-        </ul>
-      </nav>
+    // <Router>
+    //   <nav>
+    //     <ul>
+    //       <li>
+    //         <Link to="/">Home</Link>
+    //       </li>
+    //       <li>
+    //         <Link to="/Password">Password</Link>
+    //       </li>
+    //       <li>
+    //         <Link to="/Counter">Counter</Link>
+    //       </li>
+    //       <li>
+    //         <Link to="/ChangeColor">ChangeColor</Link>
+    //       </li>
+    //       <li>
+    //         <Link to="/Userdetails">Userdetails</Link>
+    //       </li>
+    //       <li>
+    //         <Link to="/CurrencyConvertor">CurrencyConvertor</Link>
+    //       </li>
+    //     </ul>
+    //   </nav>
 
-      <Routes>
-        <Route path="/Password" element={<Password />} />
-        <Route path="/Counter" element={<Counter />} />
-        <Route path="/ChangeColor" element={<ChangeColor />} />
-        <Route path="/Userdetails" element={<Userdetails />} />
-        <Route path="/CurrencyConvertor" element={<CurrencyConvertor />} />
-        <Route path="*" element={<h1>Page Not Found</h1>} />
-      </Routes>
-    </Router>
+    //   <Routes>
+    //     <Route path="/Password" element={<Password />} />
+    //     <Route path="/Counter" element={<Counter />} />
+    //     <Route path="/ChangeColor" element={<ChangeColor />} />
+    //     <Route path="/Userdetails" element={<Userdetails />} />
+    //     <Route path="/CurrencyConvertor" element={<CurrencyConvertor />} />
+    //     <Route path="*" element={<h1>Page Not Found</h1>} />
+    //   </Routes>
+    // </Router>
+    <></>
   );
 }
 
