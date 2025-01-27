@@ -33,7 +33,7 @@ export default function Home() {
         <div className="absolute inset-0 w-full sm:my-20 sm:pt-1 pt-12 h-full ">
           <img
             className="w-96"
-            src="https://i.ibb.co/5BCcDYB/Remote2.png"
+            src="https://t3.ftcdn.net/jpg/06/57/26/60/240_F_657266071_aZ13nOEJD0I1O9g1Z0rgLVJgjqi5YNg6.jpg"
             alt="image1"
           />
         </div>
@@ -42,7 +42,7 @@ export default function Home() {
       <div className="grid  place-items-center sm:mt-20">
         <img
           className="sm:w-96 w-48"
-          src="https://i.ibb.co/2M7rtLk/Remote1.png"
+          src="https://t4.ftcdn.net/jpg/08/38/89/25/360_F_838892548_k5ay5ASsmp6p6yqAzqplqfZfS6Z4Nrip.jpg"
           alt="image2"
         />
       </div>
