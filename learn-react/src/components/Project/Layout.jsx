@@ -11,6 +11,10 @@ import Card from "../ThemeComponents/Card";
 import { TodoProvider } from "../../Contexts/TodoContext";
 import TodoForm from "../TodoComponents/TodoForm";
 import TodoItem from "../TodoComponents/TodoItem";
+import AddTodo from "../TodoReduxComponents/AddTood";
+import Todos from "../TodoReduxComponents/Todos";
+import { Provider } from "react-redux";
+import { store } from "../../app/store";
 
 function Layout() {
   const [themeMode, setThemeMode] = useState("light");
@@ -54,6 +58,8 @@ function Layout() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  const [editTodo, setEditTodo] = useState(null);
+  const clearEdit = () => setEditTodo(null);
   return (
     <>
       <Header />
@@ -102,6 +108,10 @@ function Layout() {
           </div>
         </div>
       </TodoProvider>
+      <Provider store={store}>
+        <AddTodo editTodo={editTodo} clearEdit={clearEdit} />
+        <Todos setEditTodo={setEditTodo} />
+      </Provider>
     </>
   );
 }
