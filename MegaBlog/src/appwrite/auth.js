@@ -1,41 +1,49 @@
 import conf from "../conf/conf";
 import { Client, Account, ID } from "appwrite";
 
-const client = new Client().setProject("<PROJECT_ID>"); // Your project ID
-
-const account = new Account(client);
-
-const promise = account.create("[USER_ID]", "email@example.com", "");
-
-promise.then(
-  function (response) {
-    console.log(response); // Success
-  },
-  function (error) {
-    console.log(error); // Failure
-  }
-);
-
 export class AuthService {
   client = new Client();
   account;
   constructor() {
-    this.client.setProject(conf.appwriteProjectId);
-    this.account = new Account(client);
+    this.client
+      .setEndpoint(conf.appwriteUrl)
+      .setProject(conf.appwriteProjectId);
+    this.account = new Account(this.client);
   }
   async createAccount({ email, password, name }) {
-    const userAccount = this.account.create(ID.unique(), email, password, name);
-    if (userAccount) {
-      return this.login({ email, password });
-    } else {
-      return userAccount;
+    try {
+      const userAccount = await this.account.create(
+        ID.unique(),
+        email,
+        password,
+        name
+      );
+      if (userAccount) {
+        return this.login({ email, password });
+      } else {
+        return userAccount;
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
     }
   }
   async login({ email, password }) {
-    return this.account.createEmailPasswordSession(email, password, name);
+    try {
+      return await this.account.createEmailPasswordSession(email, password);
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
   async getCurrentUser() {
-    return this.account.get();
+    try {
+      const acc = await this.account.get();
+      return acc;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
   async logout() {
     return this.account.deleteSessions();
