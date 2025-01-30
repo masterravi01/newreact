@@ -13,7 +13,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const signup = async (data) => {
+  const createAccount = async (data) => {
     try {
       console.log(data);
       setError("");
@@ -51,7 +51,7 @@ const SignUp = () => {
           </Link>
         </p>
         {error && <p className="text-red-500 mt-8 text-center">{error}</p>}
-        <form onSubmit={handleSubmit(SignUp)} className="mt-8">
+        <form onSubmit={handleSubmit(createAccount)} className="mt-8">
           <div className="space-y-5">
             <Input
               label="Email: "
