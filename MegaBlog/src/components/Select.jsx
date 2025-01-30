@@ -12,7 +12,7 @@ const Select = ({ label, className = "", options = [], ...props }, ref) => {
         id={id}
       >
         {options?.map((option) => (
-          <option key={option} value={option}>
+          <option key={option} value={option == "active" ? true : false}>
             {option}
           </option>
         ))}
