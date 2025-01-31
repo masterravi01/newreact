@@ -1,12 +1,14 @@
 import React from "react";
 import { Container, Logo, LogoutBtn } from "../index";
-import { Link, useNavigation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import authService from "../../appwrite/auth";
+import { logout } from "../../features/authSlice";
 
 const Header = () => {
-  const authStatus = useSelector((state) => state.auth?.status);
-  const navigate = useNavigation();
-
+  const authStatus = useSelector((state) => state?.status);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const navItems = [
     {
       name: "Home",
@@ -18,7 +20,23 @@ const Header = () => {
       slug: "/login",
       active: !authStatus,
     },
+    {
+      name: "Signup",
+      slug: "/signup",
+      active: !authStatus,
+    },
+    {
+      name: "All Posts",
+      slug: "/allposts",
+      active: authStatus,
+    },
+    {
+      name: "Add Post",
+      slug: "/add-post",
+      active: authStatus,
+    },
   ];
+
   return (
     <header className="py-3 shadow bg-gray-500">
       <Container>

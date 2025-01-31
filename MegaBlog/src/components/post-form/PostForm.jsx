@@ -11,14 +11,14 @@ const PostForm = ({ post }) => {
     useForm({
       defaultValues: {
         title: post?.title || "",
-        slug: post?.slug || "",
+        slug: post?.$id || "",
         content: post?.content || "",
-        status: post?.status || true,
+        status: post?.status || "active",
       },
     });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userData = useSelector((state) => state.user.userData);
+  const userData = useSelector((state) => state.userData);
 
   const submit = async (data) => {
     if (post) {
@@ -53,7 +53,7 @@ const PostForm = ({ post }) => {
   };
 
   const slugTransform = useCallback((value) => {
-    if (value & (typeof value == "string")) {
+    if (value && typeof value == "string") {
       return value
         .trim()
         .toLowerCase()
